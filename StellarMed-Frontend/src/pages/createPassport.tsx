@@ -4,19 +4,21 @@ import Navbar from '../components/navbar/navbar';
 
 export default function CreatePassport() {
   const [currentStep, setCurrentStep] = useState(1);
-  const [kycFile, setKycFile] = useState(null);
-  const [healthRecords, setHealthRecords] = useState([]);
+  const [kycFile, setKycFile] = useState<File | null>(null);
+  const [healthRecords, setHealthRecords] = useState<File[]>([]);
   const [appointmentDate, setAppointmentDate] = useState('');
   const [selectedHospital, setSelectedHospital] = useState('');
   const [verificationStatus, setVerificationStatus] = useState('pending');
 
-  const handleKycUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) setKycFile(file);
+  const handleKycUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+      setKycFile(file);
+    }
   };
 
-  const handleHealthRecordsUpload = (e) => {
-    const files = Array.from(e.target.files);
+  const handleHealthRecordsUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
     setHealthRecords(files);
   };
 

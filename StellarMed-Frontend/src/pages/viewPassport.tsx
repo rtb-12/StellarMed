@@ -1,4 +1,4 @@
-import { QrCodeIcon, ShieldCheckIcon, ClipboardDocumentIcon } from '@heroicons/react/24/outline';
+import {  ShieldCheckIcon, ClipboardDocumentIcon } from '@heroicons/react/24/outline';
 import { QRCodeSVG } from 'qrcode.react';
 import { useState } from 'react';
 import Navbar from '../components/navbar/navbar';
@@ -26,7 +26,7 @@ export default function HealthPassport() {
     status: "Valid"
   };
 
-  const copyToClipboard = (text) => {
+  const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
   };
 
@@ -145,14 +145,20 @@ export default function HealthPassport() {
   );
 }
 
-const InfoRow = ({ label, value }) => (
+const InfoRow = ({ label, value }: { label: string; value: string }) => (
   <div className="flex justify-between border-b border-slate-700 py-2">
     <span className="text-gray-400">{label}</span>
     <span className="font-medium">{value}</span>
   </div>
 );
 
-const VaccinationSection = ({ vaccinations }) => (
+interface Vaccination {
+  name: string;
+  date: string;
+  dose: string;
+}
+
+const VaccinationSection = ({ vaccinations }: { vaccinations: Vaccination[] }) => (
   <div>
     <h3 className="font-bold mb-3">Vaccinations</h3>
     {vaccinations.map((vax, index) => (
@@ -167,7 +173,13 @@ const VaccinationSection = ({ vaccinations }) => (
   </div>
 );
 
-const TestResultsSection = ({ tests }) => (
+interface MedicalTest {
+  type: string;
+  result: string;
+  date: string;
+}
+
+const TestResultsSection = ({ tests }: { tests: MedicalTest[] }) => (
   <div>
     <h3 className="font-bold mb-3">Recent Medical Tests</h3>
     {tests.map((test, index) => (

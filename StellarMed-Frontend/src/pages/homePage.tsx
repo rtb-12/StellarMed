@@ -1,8 +1,7 @@
-import React from "react";
-import { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import {
-  GlobeAltIcon,
+
   LockClosedIcon,
   QrCodeIcon,
   UserGroupIcon,

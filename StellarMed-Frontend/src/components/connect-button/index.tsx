@@ -19,7 +19,6 @@ const ConnectButton: React.FC<ConnectButtonProps> = ({
   label = "Connect Wallet",
   className = '',
   onConnect,
-  onDisconnect
 }) => {
   const [isConnecting, setIsConnecting] = useState(false);
 

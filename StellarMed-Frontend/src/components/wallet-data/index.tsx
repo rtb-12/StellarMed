@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useIsMounted } from "../../hooks";
 import ConnectButton from "../connect-button";
 import { UserCircleIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
